@@ -1,36 +1,28 @@
 import { useState } from 'react'
 
-const Resenia = ({ resenia}) => {
-    //Definir estados iniciales 
-    const [rating, setRating] = useState(resenia.rating)
-    const [comment, setComment] = useState(resenia.text)
+const Resenia = ({ resenia, deleteResenia  }) => {
 
-    //cambiar el etado del rating
-    const addNota = () =>{
-       setRating((prev)=>{
-            return prev + 1
-       })
+    //Definir estados iniciales:
+    const [rating , setRating ] = useState(resenia.rating)
+    const [comment ,
+           setComment ] = useState(resenia.text)
+
+    //cambiar el estado del rating 
+    
+    const restNota = () => {
+
     }
-    const restNota = () =>{
-        setRating ((prev)=>{
-            return prev -1
-        })
-    }
+
     return (
-
         <div className="card">
             <div className="num-display">
-                {rating}
+                { rating  }
             </div>
             <div className="text-display">
-                {comment}
+                { comment }
             </div>
-            <button onClick={addNota}>
-                Cambiar nota
-            </button>
-            <br />
-            <button onClick={restNota}>
-                Disminuir nota
+            <button onClick={ () => deleteResenia(resenia.id) } className="close">
+                 Eliminar
             </button>
         </div>
     )
